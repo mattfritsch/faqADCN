@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+{% block title %} ACCUEIL {% endblock %}
+{% block menu %}
+    <ul class="navbar nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link link-primary" id="nav-item-menu" href="/">Accueil</a>
+            </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link link-dark dropdown-toggle" href="/faq" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                FAQ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#database">Database</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#dossier">Dossier</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#conditions">Conditions</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#info">Informations générales</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#interchu">Inter-CHU</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/about">A propos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/contact">Contact</a>
+        </li>
+        {% if is_granted=="admin" %}
+            <li class="nav-item">
+                <a class="nav-link link-dark" id="nav-item-menu" href="/gestion">Gestionnaire FAQ</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% block content %}
+    <div class="row row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/pictures/faq.png" class="card-img-top" alt="faq">
+                <div class="card-body">
+                    <h5 class="card-title">FAQ</h5>
+                    <p class="card-text">Trouver les réponses à vos questions !</p>
+                    <a href="faq" class="btn btn-primary">Go sur la FAQ</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/pictures/about.png" class="card-img-top" alt="about">
+                <div class="card-body">
+                    <h5 class="card-title">A propos de nous</h5>
+                    <p class="card-text">Pour en apprendre un peu plus sur nous.</p>
+                    <a href="about" class="btn btn-primary">Cliquez ici !</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-80">
+                <img src="assets/pictures/contact.png" class="card-img-top" alt="contact">
+                <div class="card-body">
+                    <h5 class="card-title">Contact</h5>
+                    <p class="card-text">Vous pouvez tout de même nous contacter en cas de problème. </p>
+                    <a href="contact" class="btn btn-primary">Contactez-nous</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+{% block title %}AJOUTER{% endblock %}
+{% block menu %}
+    <ul class="navbar nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/">Accueil</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link link-dark dropdown-toggle" href="/faq" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                FAQ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#database">Database</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#dossier">Dossier</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#conditions">Conditions</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#info">Informations générales</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#interchu">Inter-CHU</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/about">A propos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/contact">Contact</a>
+        </li>
+        {% if is_granted=="admin" %}
+            <li class="nav-item">
+                <a class="nav-link link-primary" id="nav-item-menu" href="/gestion">Gestionnaire FAQ</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% block content %}
+    <form method="post">
+        <div class="row">
+            <h2 class="text-center">Ajout d'une nouvelle question</h2>
+            <div class="mb-4">
+                <label for="questions" class="form-label">Intitulé de la question</label>
+                <textarea class="form-control" id="questions" name="questions" rows="3"required></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="answer" class="form-label">Intitulé de la réponse</label>
+                <textarea class="form-control" rows="3" id="answer" name="answer" required></textarea>
+            </div>
+            <div class="mb-3">
+                <div class="accordion" id="accordionExample" style="margin-bottom: 2%;">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Syntaxe des thèmes (à lire)
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse hide" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <h2 class="text-primary">Veuillez respecter cette syntaxe !</h2>
+                                <ul>
+                                    <li>database</li>
+                                    <li>dossier</li>
+                                    <li>conditions</li>
+                                    <li>informations generales</li>
+                                    <li>interchu</li>
+                                </ul>
+                                <p>Si vous n'écrivez pas le thème de la <strong>même</strong> manière. Il y aura des bugs
+                                    d'affichage de la FAQ.
+                                    Si vous avez peur de vous trompez, veuillez <strong>COPIER/COLLER</strong>
+                                    Merci de votre vigilance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label for="theme" class="form-label">Thème de la question</label>
+                <textarea class="form-control" rows="1" id="theme" name="theme" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" id="buttonAjouter" style="margin-right: 2%">Ajouter une question</button>
+                <a href="/gestion"><button class="btn btn-lg btn-outline-dark me-2" type="button">Annuler</button></a>
+            </div>
+    </form>
+{% endblock %}

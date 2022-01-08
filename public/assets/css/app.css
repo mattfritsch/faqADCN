@@ -1,0 +1,63 @@
+/*Style du footer*/
+footer{
+    margin: 5%;
+    /*position : fixed;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*left: 0;*/
+}
+/*--------FAQ---------*/
+/*Style de la FAQ*/
+#database{
+    margin: 5%;
+}
+#dossier{
+    margin : 5%
+}
+#conditions{
+    margin : 5%;
+}
+#info{
+    margin : 5%;
+}
+#interchu{
+    margin : 5%;
+}
+/*Style du menu de la FAQ*/
+#nav-menu-faq{
+    background-color: #E7F1FF;
+    margin : 6%;
+}
+#nav-item-faq:hover{
+    color : #0B5ED7;
+}
+/*-------MENU PRINCIPAL--------*/
+/*Style du navbar, dropdown-item*/
+#dropdown-item-faq:hover{
+    color: #0B5ED7
+}
+
+#nav-item-menu:hover{
+    color: #0B5ED7;
+}
+
+#navbarDropdownMenuLink:hover{
+    color: #0B5ED7;
+}
+/*------CONTACT----*/
+#card-email{
+    margin : 5%
+}
+
+#card-facebook{
+    margin: 5%;
+}
+
+/*-----INSCRIPTION----*/
+#btn-register{
+    margin-top: 5%;
+}
+
+
+
+

@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+{% block title %}INSCRIPTION{% endblock %}
+{% block content %}
+    <form method="post">
+        <h2 class="text-center">Inscrivez-vous !</h2>
+        <div class="row jumbotron">
+            <div class="col-sm-6 form-group">
+                <label for="name-f">Nom</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Entrer votre nom." required>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="pass">Mot de passe</label>
+                <input type="Password" name="password" class="form-control" id="password" name="password"
+                       placeholder="Entrer votre mot de passe." required>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="name-l">Prénom</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Entrer votre prénom." required>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="pass2">Confirmer votre mot de passe</label>
+                <input type="Password" name="cnf-password" class="form-control" id="pass2" placeholder="Ré-entrer votre mot de passe." required>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="mail" id="mail" placeholder="Entrer votre e-mail." required>
+            </div>
+            <div class="col-sm-12 form-group mb-0" id="btn-register">
+                <button class="btn btn-primary float-right">S'inscrire</button>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}

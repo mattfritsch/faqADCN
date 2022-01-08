@@ -1,0 +1,156 @@
+{% extends 'layout.html.twig' %}
+{% block title %} FAQ {% endblock %}
+{% block menu %}
+    <ul class="navbar nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/">Accueil</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link link-primary dropdown-toggle" href="/faq" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                FAQ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="#database">Database</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="#dossier">Dossier</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="#conditions">Conditions</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="#info">Informations générales</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="#interchu">Inter-CHU</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/about">A propos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/contact">Contact</a>
+        </li>
+        {% if is_granted=="admin" %}
+            <li class="nav-item">
+                <a class="nav-link link-dark" id="nav-item-menu" href="/gestion">Gestionnaire FAQ</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% block faqmenu %}
+    <div id="menu-faq">
+        <nav class="navbar navbar-expand-lg navbar-light" id="nav-menu-faq">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">FAQ</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link link-primary" id="nav-item-faq" href="#database">Database</a>
+                        <a class="nav-link link-primary" id="nav-item-faq" href="#dossier">Dossier</a>
+                        <a class="nav-link link-primary" id="nav-item-faq" href="#conditions">Conditions</a>
+                        <a class="nav-link link-primary" id="nav-item-faq" href="#info">Informations générales</a>
+                        <a class="nav-link link-primary" id="nav-item-faq" href="#interchu">Inter-CHU</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row" id="database">
+        <h2>Database</h2>
+        <div class="accordion">
+            {% for databases in database %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                aria-expanded="true" aria-controls="collapseOne">
+                            {{ databases[1] }}
+                            <!-- {{ database[0]["questions"]}} -->
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                    <div class="accordion-body">
+                        {{ databases[2] }}
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" id="dossier">
+        <h2>Dossier</h2>
+        <div class="accordion">
+            {% for dossiers in dossier %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target=".collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{ dossiers[1] | nl2br }}
+                        </button>
+                    </h2>
+                    <div class="accordion-body">
+                        {{ dossiers[2] | nl2br }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" id="conditions">
+        <h2>Conditions</h2>
+        <div class="accordion">
+            {% for condition in conditions %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{ condition[1] }}
+                        </button>
+                    </h2>
+                    <div class="accordion-body">
+                        {{ condition[2] }}
+                    </div>
+                </div>
+                </br>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" id="info">
+        <h2>Informations générales</h2>
+        <div class="accordion">
+            {% for infos in info %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{ infos[1] }}
+                        </button>
+                    </h2>
+                    <div class="accordion-body">
+                        {{ infos[2] }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" id="interchu">
+        <h2>Inter-CHU</h2>
+        <div class="accordion">
+            {% for interchus in interchu %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{ interchus[1] }}
+                        </button>
+                    </h2>
+                    <div class="accordion-body">
+                        {{ interchus[2] }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

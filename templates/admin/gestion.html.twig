@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+{% block title %} GESTIONNAIRE FAQ {% endblock %}
+{% block menu %}
+    <ul class="navbar nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/">Accueil</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link link-dark dropdown-toggle" href="/faq" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                FAQ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#database">Database</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#dossier">Dossier</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#conditions">Conditions</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#info">Informations générales</a></li>
+                <li><a class="dropdown-item" id="dropdown-item-faq" href="/faq#interchu">Inter-CHU</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/about">A propos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" id="nav-item-menu" href="/contact">Contact</a>
+        </li>
+        {% if is_granted=="admin" %}
+            <li class="nav-item">
+                <a class="nav-link link-primary" id="nav-item-menu" href="/gestion">Gestionnaire FAQ</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% block content %}
+    <div class="row" id="addQuestion">
+        <div class="col-sm-6">
+            <div class="card" id="card-facebook">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">AJOUTER</h5>
+                    <p class="card-text">Pour ajouter une question à la FAQ, cliquez sur ce bouton !</p>
+                    <a href="/ajouter" class="btn btn-primary">Ajouter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="faqtable">
+        <h2>Tableau des questions et réponses de la FAQ</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Questions</th>
+                    <th scope="col">Réponses</th>
+                    <th scope="col">Thèmes</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for faqs in faq %}
+                <tr>
+                    <th scope="row">{{ faqs[0] }}</th>
+                    <td>{{ faqs[1] }}</td>
+                    <td>{{ faqs[2] }}</td>
+                    <td>{{ faqs[3] }}</td>
+                    <td><a href="/modifier/{{ faqs[0] }}"><button class="btn btn-outline-primary me-2" type="button">Modifier</button></a></td>
+                    <td><a href="/supprimer/{{ faqs[0] }}"><button class="btn btn-outline-primary me-2" type="button">Supprimer</button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
